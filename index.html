@@ -1,1 +1,279 @@
-hello world
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>iQ-Parking — Ухаалаг зогсоол</title>
+  <meta name="description" content="iQ-Parking ухаалаг зогсоолын ашиглах заавар, төлбөр төлөх заавар, аппликэйшн ашиглах заавар." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020; --card:#111733; --muted:#1a2142; --accent:#3b82f6; --text:#e5e7eb; --sub:#9ca3af; --ok:#10b981; --warn:#f59e0b; --danger:#ef4444;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text)}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    .hero{display:grid;grid-template-columns:1.1fr 0.9fr;gap:28px;align-items:center;padding:56px 0}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,rgba(59,130,246,.25),rgba(16,185,129,.25)); padding:8px 12px;border-radius:999px;font-size:12px;color:#dbeafe;border:1px solid #1f2a5a}
+    .title{font-size:44px;line-height:1.1;margin:14px 0 8px;font-weight:800}
+    .subtitle{color:var(--sub);font-size:18px}
+    .card{background:var(--card);border:1px solid #1f2a5a;border-radius:16px;padding:18px}
+    .shadow{box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .grid{display:grid;gap:16px}
+    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .chip{display:inline-block;border:1px dashed #334155;border-radius:10px;padding:6px 10px;font-size:12px;color:#cbd5e1;background:#0f142a}
+    .btn{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:white;border:none;border-radius:12px;padding:12px 16px;font-weight:600;cursor:pointer}
+    .btn.alt{background:transparent;border:1px solid #1f2a5a;color:#dbeafe}
+    .btn:active{transform:translateY(1px)}
+    .section{padding:42px 0}
+    h2{font-size:28px;margin:0 0 10px}
+    h3{font-size:18px;margin:18px 0 8px;color:#cbd5e1}
+    ol,ul{margin:0;padding-left:18px}
+    li{margin:8px 0}
+    .tag{font-size:12px;color:#a5b4fc;background:#0f142a;border:1px solid #1f2a5a;border-radius:999px;padding:4px 10px}
+    .muted{color:var(--sub)}
+    .hl{color:#fef3c7}
+    .flex{display:flex;gap:12px;flex-wrap:wrap}
+    .kbd{font:600 12px/1.6 "Inter";padding:2px 6px;border-radius:6px;border:1px solid #374151;background:#0f142a;color:#e5e7eb}
+    .note{border-left:3px solid var(--warn);padding:10px 12px;background:#141a36;border-radius:10px}
+    .danger{border-left:3px solid var(--danger)}
+    .ok{border-left:3px solid var(--ok)}
+    .accordion{border-radius:12px;overflow:hidden;border:1px solid #1f2a5a}
+    .acc-item + .acc-item{border-top:1px solid #1f2a5a}
+    .acc-head{background:#121938;cursor:pointer;padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
+    .acc-head h3{margin:0;font-size:16px}
+    .acc-body{background:#0f152f;display:none;padding:14px 16px}
+    .acc-item.open .acc-body{display:block}
+    .foot{padding:24px 0;color:#94a3b8;font-size:14px;border-top:1px solid #1f2a5a;margin-top:36px}
+    nav{position:sticky;top:0;background:rgba(11,16,32,.8);backdrop-filter:blur(8px);border-bottom:1px solid #1f2a5a;z-index:10}
+    nav .row{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    nav a{color:#c7d2fe;margin:0 10px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800}
+    .logo-mark{width:28px;height:28px;border-radius:7px;background:conic-gradient(from 180deg at 50% 50%, #60a5fa, #34d399, #60a5fa);box-shadow:0 0 20px rgba(59,130,246,.35) inset}
+
+    @media (max-width:960px){
+      .hero{grid-template-columns:1fr}
+      .grid.cols-3{grid-template-columns:1fr}
+      .grid.cols-2{grid-template-columns:1fr}
+      .title{font-size:36px}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav>
+    <div class="container row">
+      <div class="logo"><span class="logo-mark"></span><span>iQ‑Parking</span></div>
+      <div class="flex">
+        <a href="#guide">Ашиглах заавар</a>
+        <a href="#payment">Төлбөр</a>
+        <a href="#reminders">Санамж</a>
+        <a href="#app">Апп</a>
+        <a href="#faq">Түгээмэл асуулт</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="container hero">
+    <div>
+      <span class="badge">Ухаалаг зогсоол • Self‑Service</span>
+      <h1 class="title">iQ‑Parking ухаалаг зогсоол
+        <span class="hl">АШИГЛАХ ЗААВАР</span></h1>
+      <p class="subtitle">Таны аюулгүй, хурдан, цахим төлбөртэй зогсоол. Төхөөрөмжийн шар хайрцгийн <span class="kbd">QR</span> кодыг утасны камераар уншиж төлбөрөө баталгаажуулаад, түгжээ <strong>бүрэн буусны дараа</strong> хөдөлгөөнөө хийж гараарай.</p>
+      <div class="flex" style="margin-top:14px">
+        <a class="btn" href="#app">Апп татах / заавар</a>
+        <a class="btn alt" href="#payment">Төлбөр төлөх алхам</a>
+      </div>
+      <div style="margin-top:18px" class="flex">
+        <span class="chip">24/7 ажиллана</span>
+        <span class="chip">QR‑ээр төлнө (банкны QR биш)</span>
+        <span class="chip">Бодит цагийн чөлөөт байршил</span>
+      </div>
+    </div>
+    <div class="card shadow">
+      <h3>Түргэн санамж</h3>
+      <ol>
+        <li>Тээврийн хэрэгслээ шар хайрцгийг <strong>дайралгүйгээр</strong> зөв байрлуулна.</li>
+        <li>Хажуугийн хашлага, <span class="kbd">шар зураас</span>-ны дагуу <strong>тэгш</strong> зогсоно.</li>
+        <li>Зогсоолын <strong>хэвтээ түгжээг</strong> урд/хойд дугуйн <em>голд</em>, өргөний <em>⅔‑оос багагүй</em> хэсэгт тааруулна.</li>
+        <li>Гарахдаа шар хайрцаг дээрх <strong>QR</strong>-ыг уншуулж төлөөд, <strong>түгжээ буусны дараа</strong> хөдөлнө.</li>
+      </ol>
+      <p class="note ok" style="margin-top:10px"><strong>Зөвлөгөө:</strong> QR уншигдахгүй бол чийгтэй зүйлээр арчиж тодруулж, эсвэл “QR code scanner” апп ашиглаарай.</p>
+    </div>
+  </header>
+
+  <!-- GUIDE SECTION -->
+  <section id="guide" class="container section">
+    <h2>Зогсоол ашиглах заавар</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <ol>
+          <li>Тээврийн хэрэгслийг <strong>шар хайрцгийг дайрахгүйгээр</strong> байрлуулах.</li>
+          <li>Хажуугийн хашлага болон <strong>шар зураасны дагуу</strong> тэгш байрлуулах.</li>
+          <li>Байршуулах/байрлалаа өөрчлөхийн өмнө <strong>орчноо сайтар ажиглаж</strong>, явган зорчигч болон саадыг <strong>бүрэн нягтлах</strong>.</li>
+          <li><strong>Хормойтой/унжсан</strong> бүтэцтэй тээврийн хэрэгсэл орж зогсохыг <strong>хориглоно</strong>.</li>
+          <li>Хэвтээ түгжээг урд/хойд дугуйн <strong>голд</strong>, өргөний <strong>⅔‑аас багагүй</strong> хэсэгт тааруулж байрлуулах.</li>
+          <li>Төхөөрөмжийн мэдрэгч тээврийн хэрэгслийг байрлуулмагц ажиллаж <strong>түгжигддэг</strong> тул гарах/байрлал өөрчлөхдөө шар хайрцаг дээрх <strong>QR</strong>-ыг уншуулж, <strong>төлбөрөө төлж</strong>, <strong>түгжээ буусны дараа</strong> хөдөлгөөн хийнэ.</li>
+          <li><strong>Түгжээ бүрэн түгжигдэх/онгойхоос өмнө</strong> хөдөлгөөн хийх, хаалга онгойлгож/хаах үйлдэл хийхийг <strong>хориглоно</strong>.</li>
+          <li>Төлбөр төлсний дараа түгжээ <strong>бүрэн буутал</strong> хөдөлгөхгүй байх.</li>
+          <li>Зогсоолд байрлаж буй тээврийн хэрэгслийн <strong>зорчих хөдөлгөөнийг хааж</strong> бүх төрлийн ТХ байрлуулахыг <strong>хориглоно</strong>.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <div class="accordion">
+          <div class="acc-item open">
+            <div class="acc-head"><h3>Яагаад “банкны QR” биш вэ?</h3><span class="tag">Тайлбар</span></div>
+            <div class="acc-body"><p>Шар хайрцаг дээрх QR нь <strong>вэб холбоос (линк)</strong> бөгөөд төлбөрийн систем рүү хөтөлнө. Тиймээс <strong>утасны камераар шууд</strong> уншуулна. <em>Банкны апп доторх QR‑аар уншуулахгүй.</em></p></div>
+          </div>
+          <div class="acc-item">
+            <div class="acc-head"><h3>QR уншигдахгүй бол?</h3><span class="tag">Алхамууд</span></div>
+            <div class="acc-body">
+              <ol>
+                <li>QR‑ыг <strong>чийгтэй зүйлээр зөөлөн арчиж</strong> тодруулна.</li>
+                <li>Камераар уншигдахгүй бол “<strong>QR code scanner</strong>” апп ашиглана (AppStore/PlayStore‑оос татна).</li>
+                <li>Зогсоол бүрд байрласан <strong>3 ижил QR</strong>-ын аль нэгийг ашиглаж болно.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="acc-item">
+            <div class="acc-head"><h3>Аюулгүй байдлын зөвлөмж</h3><span class="tag">Safety</span></div>
+            <div class="acc-body">
+              <ul>
+                <li>Түгжээ <strong>ажиллах үед</strong> хүмүүс, эд зүйлсийг түгжээнээс <strong>зайтай</strong> байлга.</li>
+                <li>Гарахдаа <strong>эхлээд төлбөрөө</strong> төлж, <strong>буусан эсэхийг</strong> шалга.</li>
+                <li>Орчноо <strong>үргэлж нягталж</strong>, явган зорчигчид давамгай эрхтэйг санаж хөдөл.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:12px">⚠️ Дээрх зааврыг мөрдөөгүйгээс үүсэх эрсдэлд зогсоол эзэмшигч хариуцахгүй (доорх <a href="#reminders">Санамж</a>-ыг үзнэ үү).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAYMENT SECTION -->
+  <section id="payment" class="container section">
+    <h2>Төлбөр төлөх заавар</h2>
+    <div class="grid cols-3">
+      <div class="card">
+        <h3>1) QR‑ыг камераар уншуулна</h3>
+        <p>Шар хайрцган дээрх <strong>QR</strong> кодыг <strong>ГАР УТАСНЫ КАМЕРААР</strong> уншуулна. <span class="hl">Анхаар:</span> <em>банкны аппын QR‑аар уншуулахгүй.</em></p>
+      </div>
+      <div class="card">
+        <h3>2) Линк дээр дарж нэвтэрнэ</h3>
+        <p>Камераас гарч ирэх <strong>вэб холбоос</strong> дээр дарж нэвтрээд, <strong>гүйлгээ хийж</strong> төлбөрөө баталгаажуулна.</p>
+        <p class="muted">Зогсоол бүрд <strong>3 ижил QR</strong> байрласан — алиныг нь ч ашиглаж болно.</p>
+      </div>
+      <div class="card">
+        <h3>3) Түгжээ буусны дараа хөдөлнө</h3>
+        <p>Төлбөр амжилттай баталгаажсаны дараа түгжээ <strong>автоматаар бууна</strong>. <strong>Бүрэн буусан эсэхийг</strong> шалгаад хөдөлгөөн хий.</p>
+      </div>
+    </div>
+    <div class="note" style="margin-top:14px"><strong>Тусламж:</strong> Камераар уншигдахгүй бол “QR code scanner” апп ашиглаж болно (AppStore/PlayStore).</div>
+  </section>
+
+  <!-- REMINDERS / POLICY SECTION -->
+  <section id="reminders" class="container section">
+    <h2>Санамж ба Хариуцлага</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>Үйлчлүүлэгчийн хариуцлага</h3>
+        <ul>
+          <li>Түгжээ бүрэн буугаагүй байхад хөдөлгөөн хийснээс үүдэх <strong>эвдрэл, гэмтэлд</strong> эзэмшигч <strong>хариуцахгүй</strong>.</li>
+          <li>Түгжээ буугаагүй үед машины жинг нэмэгдүүлснээс (<em>зорчигч суулгах, ачаа ачих</em>) үүсэх хохиролд <strong>эзэмшигч хариуцахгүй</strong>.</li>
+          <li><strong>Хормойтой/унжсан</strong> бүтэцтэй тээврийн хэрэгсэл байрлуулснаас үүсэх аливаа эвдрэл, хохирлыг <strong>хариуцахгүй</strong>.</li>
+          <li>Түгжээ нээгдэх/хаагдах үед <strong>түгжээнээс зайтай</strong> байж, гар хөл хавчуулах, эд зүйл унагахаас сэргийлэх нь <strong>үйлчлүүлэгчийн үүрэг</strong>.</li>
+          <li>Төхөөрөмжийг санаатай/болгоомжгүйгээр эвдлэх, дайрах, төлбөр төлөхгүй <strong>хүчээр гарах</strong> тохиолдолд <strong>хохирлыг бүрэн хариуцна</strong>.</li>
+          <li>Байрлуулахдаа орчноо <strong>сайтар нягталж</strong> саад, хашлага байгаа эсэхийг шалгаагүйгээс үүсэх осол, хохирлыг <strong>үйлчлүүлэгч бүрэн хариуцна</strong>.</li>
+          <li>Зогсоолд байрлуулах, байршил өөрчлөх үед гуравдагч этгээдийн үйлдлээс үүсэх <strong>аливаа осол, хохирлыг</strong> <strong>үйлчлүүлэгч бүрэн хариуцна</strong>.</li>
+          <li>Захиалагдсан (түгжээтэй) зогсоолд хүчээр <strong>орохыг хориглоно</strong>.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Нэмэлт заавар</h3>
+        <ul>
+          <li>iQ‑Parking апп‑аар зогсоол <strong>захиалагдсан</strong> байх магадлалтай тул төхөөрөмж <strong>түгжээтэй (боссон)</strong> эсэхийг шалгаж байршина.</li>
+          <li>Self‑service тул төлбөр төлөх гар утасны <strong>камера, дата, цахим төлбөрийн хэрэгслийн бэлэн байдал</strong> нь <strong>таны хариуцлага</strong>.</li>
+          <li>Автомашин, унадаг дугуй, скүүлэр, мотоцикл зэргийг зогсоолын үйл ажиллагаанд <strong>саад болгон байрлуулах</strong> тохиолдолд <strong>торгууль</strong> ногдуулж, <em>дугуй түгжих, ачих</em> зэрэг арга хэмжээ авна.</li>
+          <li>Зогсоолд тээврийн хэрэгслээ байрлуулснаар та дээрх <strong>бүх заавар, санамжийг мөрдөхийг</strong> <strong>зөвшөөрсөнд</strong> тооцно.</li>
+        </ul>
+        <p class="note danger" style="margin-top:12px"><strong>Анхаар:</strong> Түгжээ бүрэн буугаагүй үед <em>ярих/суух/ачаалах</em> зэрэг автомашины жинг өөрчлөх үйлдлээс зайлсхий.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP SECTION -->
+  <section id="app" class="container section">
+    <h2>“iQ Parking” мобайл апп ашиглах заавар</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <ol>
+          <li><strong>Апп суулгах:</strong> AppStore болон PlayStore‑оос <em>iQ Parking</em>‑ийг татаж суулгана.</li>
+          <li><strong>Бүртгэл:</strong> Утасны дугаараа оруулж <em>баталгаажуулна</em>.</li>
+          <li><strong>Сул зогсоол харах:</strong> Бодит цагаар <em>сул зогсоолууд</em> харагдана.</li>
+          <li><strong>Захиалах:</strong> Өөрийн зогсох байршлаа сонгон <em>захиална</em>.</li>
+          <li><strong>Төлбөр:</strong> Хэтэвчээ <em>цэнэглэж</em> захиалгын төлбөрөө төлнө.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3>Апп татах холбоос</h3>
+        <p class="muted">Дараах товчийг дарж маркет руу орно уу.</p>
+        <div class="flex">
+          <a class="btn" href="#" aria-label="App Store"> App Store</a>
+          <a class="btn" href="#" aria-label="Google Play">▶ Google Play</a>
+          <a class="btn alt" href="#payment">QR‑аар төлөх заавар</a>
+        </div>
+        <p class="muted" style="margin-top:8px">(*) Одоогоор холбоосууд туршилтын төлөвт — бодит линкээр солих.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section id="faq" class="container section">
+    <h2>Түгээмэл асуулт</h2>
+    <div class="accordion">
+      <div class="acc-item open">
+        <div class="acc-head"><h3>QR уншуултал юу болох вэ?</h3><span class="tag">Flow</span></div>
+        <div class="acc-body"><p>Камераас холбоос нээгдэж төлбөрийн хуудсанд шилжинэ. Төлбөр баталгаажмагц түгжээ автоматаар <strong>бууж</strong>, гарах боломжтой болно.</p></div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-head"><h3>QR‑аа мартсан/алдсан бол?</h3><span class="tag">Сольж ашиглах</span></div>
+        <div class="acc-body"><p>Нэг зогсоолд байрлах <strong>3 ижил QR</strong>‑ын аль нэгийг ашиглаж болно.</p></div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-head"><h3>Түгжээ буухгүй бол яах вэ?</h3><span class="tag">Дэмжлэг</span></div>
+        <div class="acc-body"><p>Төлбөр амжилттай эсэхийг дахин шалга. Буухгүй хэвээр байвал оператор руу холбогдоно (<em>доорх холбоо барих</em>).</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / FOOTER -->
+  <footer class="container foot">
+    <div class="grid cols-2">
+      <div>
+        <div class="logo"><span class="logo-mark"></span><span>iQ‑Parking</span></div>
+        <p class="muted">© <span id="year"></span> iQ‑Parking. Бүх эрх хамгаалагдсан.</p>
+      </div>
+      <div>
+        <div class="flex">
+          <span class="tag">Холбоо барих: <a href="mailto:hello@iqparking.mn">hello@iqparking.mn</a></span>
+          <span class="tag">Дугаар: <a href="tel:+97600000000">+976 00 00 0000</a></span>
+        </div>
+        <p class="muted" style="margin-top:8px">Зөвлөмж: Энэхүү лэндинг хуудсыг <em>iqparking.mn/index.html</em> нэршлээр байршуулна. Апп линк, дэмжлэгийн дугаар, лого зэргийг бодит мэдээллээр солино.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('.acc-head').forEach(h => {
+      h.addEventListener('click', () => h.parentElement.classList.toggle('open'))
+    })
+  </script>
+</body>
+</html>
